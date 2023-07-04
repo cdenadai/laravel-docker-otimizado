@@ -1,5 +1,5 @@
 export default function ApplicationLogo(props) {
     return (
-        <img src="storage/logo.png"  className="w-40 mb-10 h-10"/>
+        <img src="storage/logo.png"  className="w-26 h-6"/>
     );
 }
