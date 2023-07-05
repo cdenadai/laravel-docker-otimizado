@@ -7,7 +7,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
 
-export default function Login({ status, canResetPassword }) {
+export default function Login({ status, canResetPassword, apiStatus = false }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
@@ -26,11 +26,23 @@ export default function Login({ status, canResetPassword }) {
         post(route('login'));
     };
 
+    const getApiStatus = () => {
+        const apiStatusColor = apiStatus === true ? 'bg-green-600' : 'bg-red-600';
+
+        return (
+            <div className="font-medium text-sm flex items-center text-gray-400 w-full justify-end">
+                api status:
+                <div className={`h-4 w-4 rounded-full ml-2 ${apiStatusColor}`}></div>
+            </div>
+        )
+    }
+
     return (
         <GuestLayout>
             <Head title="Log in" />
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+            {getApiStatus()}
 
             <form onSubmit={submit}>
                 <div>
