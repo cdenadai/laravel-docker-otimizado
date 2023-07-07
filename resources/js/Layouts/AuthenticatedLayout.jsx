@@ -3,7 +3,9 @@ import Menu from '@/Components/Menu/Menu';
 export default function Authenticated({ user, header, children }) {
     return (
         <div className="min-h-screen bg-gray-100">
-            <Menu user={user}/>
+            <Menu user={user} >
+                <main>{children}</main>
+            </Menu>
 
             {header && (
                 <header className="bg-white shadow">
@@ -11,7 +13,6 @@ export default function Authenticated({ user, header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
         </div>
     );
 }

@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/react';
 import MenuItem from './MenuItem';
 import { menuItens } from '@/Constants/menu';
 
-export default function Menu({user}) {
+export default function Menu({user, children}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     const menu = () => (
@@ -106,7 +106,7 @@ export default function Menu({user}) {
                     <li>{menu()}</li>
                 </ul>
                 <div className="mt-4 ml-4 p-4 bg-white w-full">
-                    Conteúdo
+                    {children}
                 </div>
             </div>
         </>
