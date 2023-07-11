@@ -10,7 +10,7 @@ export default function Menu({user, children}) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     const menu = () => (
-        menuItens.map((item) => (<MenuItem label={item.label} routeName={item.routeName} border={item.border} />) )
+        menuItens.map((item) => (<MenuItem label={item.label} routeName={item.routeName} border={item.border} key={item.routeName}/>) )
     )
 
     return (
@@ -102,10 +102,10 @@ export default function Menu({user, children}) {
             </nav>
 
             <div className="h-screen hidden sm:flex">
-                <ul className="bg-white w-[248px]">
+                <ul className="bg-white w-[248px] pt-4">
                     <li>{menu()}</li>
                 </ul>
-                <div className="mt-4 ml-4 p-4 bg-white w-full">
+                <div className="bg-white w-full overflow-x m-4 rounded-l-md">
                     {children}
                 </div>
             </div>

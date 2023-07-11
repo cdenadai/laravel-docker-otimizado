@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
     {
         $loginBody = new LoginBody(...$request->validated());
         $loginResult = $this->zuviaService->login($loginBody);
-        
+
         if(!$loginResult->success) {
             return redirect()->back()->with([
                 'color' => 'red',

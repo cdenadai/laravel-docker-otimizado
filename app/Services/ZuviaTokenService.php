@@ -13,6 +13,7 @@ class ZuviaTokenService
     private string $baseUrl;
     private string $healthUrl = 'api/health';
     private string $loginUrl = 'admins/login';
+    private string $getAdminsUrl = 'admins';
 
     public function __construct()
     {
@@ -32,6 +33,13 @@ class ZuviaTokenService
         ]);
     }
 
+    public function getLoggedClient() : PendingRequest {
+        $token = session('token');
+        if(!$token) throw new Exception('Authentication Token not found');
+        
+        return $this->client->withToken($token);
+    }
+    
     public function health(): bool {
         $response = $this->client->get($this->healthUrl);
         return $response->successful();
@@ -39,6 +47,12 @@ class ZuviaTokenService
 
     public function login(LoginBody $data) {
         $response = $this->client->post($this->loginUrl, $data);
+        return $response->object();
+    }
+
+    public function getAdmins(array $filters) {
+        $client = $this->getLoggedClient();
+        $response = $client->get($this->getAdminsUrl);
         return $response->object();
     }
 }

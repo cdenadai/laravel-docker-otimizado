@@ -1,32 +1,32 @@
 export const menuItens = [
     {
         label: "Contas",
-        routeName: "accounts",
+        routeName: "accounts.index",
         border: false
     },
     {
         label: "Transações",
-        routeName: "transactions",
+        routeName: "transactions.index",
         border: false
     },
     {
         label: "Emissores",
-        routeName: "issuer",
+        routeName: "issuers.index",
         border: true
     },
     {
         label: "Contratos",
-        routeName: "contracts",
+        routeName: "contracts.index",
         border: false
     },
     {
         label: "Admins",
-        routeName: "admins",
+        routeName: "admins.index",
         border: true
     },
     {
         label: "Logs",
-        routeName: "logs",
+        routeName: "logs.index",
         border: false
     }
 ];
